@@ -1,7 +1,7 @@
 import sys
-import math  # import known fonctions and constants
-import time  # Used to check computation time
-import os.path  # Used to search files on computer
+import math  
+import time  
+import os.path 
 from tkinter import Tk, Frame
 from tkinter import Button, Label, Checkbutton, BooleanVar, StringVar, Spinbox
 from tkinter.filedialog import askopenfilename
@@ -784,7 +784,7 @@ class BlackHoleGUI:
         elif int(self.size.get()) == self.blackhole.axe_X:
             self.message2["text"] = "same size as before"
         else:
-            # self.message2["text"] = "Computing"
+           
             new_size_image = int(self.size.get())
             self.blackhole.offset_X += self.blackhole.offset_X2
             self.blackhole.offset_X2 = 0
