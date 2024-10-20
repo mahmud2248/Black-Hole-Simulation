@@ -188,7 +188,7 @@ class BlackHole:
         self.Rs = Rs
         self.D = D
         self.M = (self.Rs * c**2 * au) / (2 * G * M_sun)
-        print("M = %.1e M☉\t%.2e Kg" % (self.M, self.M*M_sun))
+        print("M = %.1e M_sol\t%.2e Kg" % (self.M, self.M*M_sun))  # Or just "M = %.1e M\t%.2e Kg"
         print("Rs = %s ua\t%.2e m" % (self.Rs, self.Rs*au))
         print("D = %s ua\t%.2e m\n" % (self.D, self.D*au))
 
