@@ -1,3 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Black hole simulation
+
+@author: Jonathan Peltier
+
+GitHub repository:
+https://github.com/Python-simulation/Black-hole-simulation-using-python/
+
+BlackHole class solving photons trajectories closed to a static black hole.
+Render the perceived image deformation by a black hole.
+Object-oriented programming version.
+Numpy optimized version 30x faster.
+"""
+
 import sys
 import math  # import known fonctions and constants
 import time  # Used to check computation time
@@ -1009,31 +1024,3 @@ if __name__ == "__main__":
 #    blackhole.open(img_name, size=360)
 #    blackhole.img_resize(360)
 #    blackhole.compute(Rs=8, D=50)
-
-# Example: Writing to a file with UTF-8 encoding
-with open('output.txt', 'w', encoding='utf-8') as f:
-    f.write('Some text with ☉')def img_offset_Y(img, offset_Y):
-    """Return the image with an offset in the Y-axis."""
-    offset_Y = int(offset_Y)
-    (axe_X, axe_Y) = img.size
-
-    while offset_Y >= axe_Y:
-        offset_Y -= axe_Y
-
-    if offset_Y == 0:
-        return img
-
-    if offset_Y < 0:
-        offset_Y = -offset_Y
-        img_up = img.crop((0, 0, axe_X, axe_Y-offset_Y))
-        img_down = img.crop((0, axe_Y-offset_Y, axe_X, axe_Y))
-        img.paste(img_up, (0, offset_Y))
-
-    else:
-        img_up = img.crop((0, 0, axe_X, offset_Y))
-        img_down = img.crop((0, offset_Y, axe_X, axe_Y))
-        img.paste(img_up, (0, axe_Y-offset_Y))
-
-    img.paste(img_down, (0, 0))
-
-    return img
