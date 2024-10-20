@@ -1,7 +1,22 @@
+# -*- coding: utf-8 -*-
+"""
+Black hole simulation
+
+@author: Jonathan Peltier
+
+GitHub repository:
+https://github.com/Python-simulation/Black-hole-simulation-using-python/
+
+BlackHole class solving photons trajectories closed to a static black hole.
+Render the perceived image deformation by a black hole.
+Object-oriented programming version.
+Numpy optimized version 30x faster.
+"""
+
 import sys
-import math  
-import time  
-import os.path 
+import math  # import known fonctions and constants
+import time  # Used to check computation time
+import os.path  # Used to search files on computer
 from tkinter import Tk, Frame
 from tkinter import Button, Label, Checkbutton, BooleanVar, StringVar, Spinbox
 from tkinter.filedialog import askopenfilename
@@ -173,7 +188,7 @@ class BlackHole:
         self.Rs = Rs
         self.D = D
         self.M = (self.Rs * c**2 * au) / (2 * G * M_sun)
-        print("M = %.1e M☉\t%.2e Kg" % (self.M, self.M*M_sun))
+        print("M = %.1e M_sol\t%.2e Kg" % (self.M, self.M*M_sun))  # Or just "M = %.1e M\t%.2e Kg"
         print("Rs = %s ua\t%.2e m" % (self.Rs, self.Rs*au))
         print("D = %s ua\t%.2e m\n" % (self.D, self.D*au))
 
@@ -784,7 +799,7 @@ class BlackHoleGUI:
         elif int(self.size.get()) == self.blackhole.axe_X:
             self.message2["text"] = "same size as before"
         else:
-           
+            # self.message2["text"] = "Computing"
             new_size_image = int(self.size.get())
             self.blackhole.offset_X += self.blackhole.offset_X2
             self.blackhole.offset_X2 = 0
@@ -1009,31 +1024,3 @@ if __name__ == "__main__":
 #    blackhole.open(img_name, size=360)
 #    blackhole.img_resize(360)
 #    blackhole.compute(Rs=8, D=50)
-
-# Example: Writing to a file with UTF-8 encoding
-with open('output.txt', 'w', encoding='utf-8') as f:
-    f.write('Some text with ☉')def img_offset_Y(img, offset_Y):
-    """Return the image with an offset in the Y-axis."""
-    offset_Y = int(offset_Y)
-    (axe_X, axe_Y) = img.size
-
-    while offset_Y >= axe_Y:
-        offset_Y -= axe_Y
-
-    if offset_Y == 0:
-        return img
-
-    if offset_Y < 0:
-        offset_Y = -offset_Y
-        img_up = img.crop((0, 0, axe_X, axe_Y-offset_Y))
-        img_down = img.crop((0, axe_Y-offset_Y, axe_X, axe_Y))
-        img.paste(img_up, (0, offset_Y))
-
-    else:
-        img_up = img.crop((0, 0, axe_X, offset_Y))
-        img_down = img.crop((0, offset_Y, axe_X, axe_Y))
-        img.paste(img_up, (0, axe_Y-offset_Y))
-
-    img.paste(img_down, (0, 0))
-
-    return img
